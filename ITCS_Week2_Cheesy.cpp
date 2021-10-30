@@ -14,7 +14,7 @@ const float profit_per_container = 1.45; // dollars
 
 // Constants that can be declared before main
 const int col_width = 80; // The width of the window in columns
-const string welcome_text = "Welcome to my Cheesy Program"; // Intro message and length
+const string welcome_text = "Welcome to my SUPER DUPER Cheesy Program, on GIT!"; // Intro message and length
 const int welcome_length = welcome_text.length();
 const string prompt_text = "Please enter the total number of kilograms of cheese produced: "; // Prompt message and lengtj
 const int prompt_length = prompt_text.length();
