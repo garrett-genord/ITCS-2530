@@ -14,12 +14,13 @@ using namespace std;
 #define INDEX_USA 0
 #define INDEX_CAN 1
 #define INDEX_AUS 2
+#define INDEX_MAR 3
 
 // Cost matrix
-double cost_matrix[4][3] = { {6, 8, 10},
-                        {9, 12, 14},
-                        {12, 15, 17},
-                        {0, 0, 0} };
+double cost_matrix[4][4] = { {6, 8, 10, 900},
+                        {9, 12, 14, 312312321321},
+                        {12, 15, 17, 0.01},
+                        {0, 0, 0, 143} };
 
 
 const string welcome_text = "ITCS 2530 - Programming Assignment for week #3"; // Intro message and length for console formatting
@@ -31,7 +32,7 @@ const int output_col_width = input_col_width - 10; // Width of the output text i
 const string item_prompt = "Please enter the item name (no spaces)"; 
 const string fragile_prompt = "Is the item fragile? (y=yes/n+no)";
 const string order_prompt = "Please enter your order total";
-const string dest_prompt = "Please enter your destination (usa/can/aus)";
+const string dest_prompt = "Please enter your destination (usa/can/aus/mar)";
 const string invalid_entry_string = "Invalid entry, exiting";
 const string no_file_string = "Invalid file, exiting";
 const string item_out_string = "Your item is";
@@ -136,7 +137,7 @@ int Prompt_Get_Input(string* item_name, string* item_fragile, double* order_tota
     cin >> input_destination;
     // If not a valid destination, end the program
     transform(input_destination.begin(), input_destination.end(), input_destination.begin(), ::toupper);
-    if (input_destination != "USA" && input_destination != "AUS" && input_destination != "CAN")
+    if (input_destination != "USA" && input_destination != "AUS" && input_destination != "CAN" && input_destination != "MAR")
     {
         cout << invalid_entry_string;
         return -1;
@@ -167,6 +168,11 @@ int Get_Dest_Index(string dest)
     if (dest == "AUS")
     {
         return INDEX_AUS;
+    }
+    
+    if(dest == "MAR")
+    {
+        return INDEX_MAR;
     }
 }
 
