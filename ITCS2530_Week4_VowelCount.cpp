@@ -15,6 +15,9 @@ const string num_E_txt = "The number of E's: ";
 const string num_I_txt = "The number of I's: ";
 const string num_O_txt = "The number of O's: ";
 const string num_U_txt = "The number of U's: ";
+const string num_Y_txt = "The number of Y's: ";
+const string num_X_txt = "The number of X's: ";
+const string num_Z_txt = "The number of Z's: ";
 const string vowel_txt = "The vowel count is: ";
 const string invalid_txt = "Invalid file, exiting...\n";
 const int welcome_length = welcome_text.length();
@@ -35,7 +38,7 @@ int main(int argc, char* argv[])
 	// file variable, temp storage variable, and counter variables
 	ifstream inData;
 	char char_in;
-	int num_A = 0, num_E = 0, num_I = 0, num_O = 0, num_U = 0;
+	int num_A = 0, num_E = 0, num_I = 0, num_O = 0, num_U = 0, num_X, num_Y, num_Z;
 
 	// Open file and check if it exists
 	inData.open(argv[1]);
@@ -74,6 +77,20 @@ int main(int argc, char* argv[])
 		{
 			num_U++;
 		}
+		else if (char_in == 'X' || char_in == 'x')
+		{
+			num_X++;
+		}
+		else if (char_in == 'Y' || char_in == 'y')
+		{
+			num_Y++;
+		}
+		else if (char_in == 'Z' || char_in == 'z')
+		{
+			num_Z++;
+		}
+		
+		
 	}
 	// Close file
 	inData.close();
@@ -85,6 +102,9 @@ int main(int argc, char* argv[])
 	cout << num_I_txt << setw(col_width - num_txt_length) << '.' << num_I << endl;
 	cout << num_O_txt << setw(col_width - num_txt_length) << '.' << num_O << endl;
 	cout << num_U_txt << setw(col_width - num_txt_length) << '.' << num_U << endl;
+	cout << num_X_txt << setw(col_width - num_txt_length) << '.' << num_X << endl;
+	cout << num_Y_txt << setw(col_width - num_txt_length) << '.' << num_Y << endl;
+	cout << num_Z_txt << setw(col_width - num_txt_length) << '.' << num_Z << endl;
 	cout << vowel_txt << setw(col_width - vowel_txt_length) << '.' << (num_A + num_E + num_I + num_O + num_U) << endl;
 
 }
