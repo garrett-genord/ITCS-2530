@@ -14,3 +14,6 @@ Week 3 Assignment - Will take the item name, if it is fragile or not, the order 
 
 
 Week 4 Assignment - From the command prompt, it will take the name of a file to analyze. It will take this file, analyze its entire contents, and then output the total number of vowels and of X's, Y's, and Z's 
+
+
+Week 5 Assignment - This assignment uses user-defined functions to operate a surf shop. The user can select to view their options, purchase different types of surfboards, view the # of boards purchased, and the cost of boards purchased.
