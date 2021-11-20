@@ -10,15 +10,16 @@ using namespace std;
 
 // function prototypes
 void ShowUsage(); // displays option menu to user
-void MakePurchase(int& iTotalSmall, int& iTotalMedium, int& iTotalLarge); // makes purchase and modifies the passed in counts of boards
-void DisplayPurchase(const int iTotalSmall, const int iTotalMedium, const int iTotalLarge); // uses passed in counts to display number of boards purchased
-void DisplayTotal(const int iTotalSmall, const int iTotalMedium, const int iTotalLarge); // displays totaal # of surfboards purchased and cost
+void MakePurchase(int& iTotalXS, int& iTotalSmall, int& iTotalMedium, int& iTotalLarge); // makes purchase and modifies the passed in counts of boards
+void DisplayPurchase(const int iTotalXS, const int iTotalSmall, const int iTotalMedium, const int iTotalLarge); // uses passed in counts to display number of boards purchased
+void DisplayTotal(const int iTotalXS, const int iTotalSmall, const int iTotalMedium, const int iTotalLarge); // displays totaal # of surfboards purchased and cost
 
 // constants
 const int col_width = 60;
 const string welcome_message = " Welcome to my Johnny Utah's PointBreak Surf Shop ";
 const int welcome_length = welcome_message.length();
 
+const double cost_per_XS_board = 1234.0;
 const double cost_per_small_board = 175.0;
 const double cost_per_medium_board = 190.0;
 const double cost_per_large_board = 200.0;
@@ -27,7 +28,7 @@ int main()
 {
 	// for user input and count number of boards purchased
 	char user_input;
-	int num_small = 0, num_med = 0, num_large = 0;
+	int num_XS = 0, num_small = 0, num_med = 0, num_large = 0;
 
 	// Formatting welcome message and option menu
 	cout << fixed << showpoint << setprecision(2) << setfill('*') << setw(col_width) << '*' << endl;
@@ -48,13 +49,13 @@ int main()
 			ShowUsage();
 			break;
 		case 'P':
-			MakePurchase(num_small, num_med, num_large);
+			MakePurchase(num_XS ,num_small, num_med, num_large);
 			break;
 		case 'C':
-			DisplayPurchase(num_small, num_med, num_large);
+			DisplayPurchase(num_XS, num_small, num_med, num_large);
 			break;
 		case 'T':
-			DisplayTotal(num_small, num_med, num_large);
+			DisplayTotal(num_XS, num_small, num_med, num_large);
 			break;
 		}
 	} while (toupper(user_input) != 'Q');
@@ -67,18 +68,21 @@ void ShowUsage()
 }
 
 // Makes a purchase and modifies the parameter passed to it in main
-void MakePurchase(int& iTotalSmall, int& iTotalMedium, int& iTotalLarge)
+void MakePurchase(int& iTotalXS, int& iTotalSmall, int& iTotalMedium, int& iTotalLarge)
 {
 	int num_in = 0;
 	char type_in;
 
 	// prompt user and retrieve input
-	cout << "Please enter the quantity and type (S=small, M=medium, L=large) or surfboard\nyou would like to purchase:";
+	cout << "Please enter the quantity and type (X =Xsmall, S=small, M=medium, L=large) or surfboard\nyou would like to purchase:";
 	cin >> num_in; cin >> type_in;
 
 	// make purchase
 	switch (toupper(type_in))
 	{
+	case 'X': 
+		iTotalXS += num_in;
+		break;
 	case 'S':
 		iTotalSmall += num_in;
 		break;
@@ -93,14 +97,19 @@ void MakePurchase(int& iTotalSmall, int& iTotalMedium, int& iTotalLarge)
 }
 
 // Displays # boards purchased
-void DisplayPurchase(const int iTotalSmall, const int iTotalMedium, const int iTotalLarge)
+void DisplayPurchase(const int iTotalXS, const int iTotalSmall, const int iTotalMedium, const int iTotalLarge)
 {
-	if ((iTotalSmall == 0) && (iTotalMedium == 0) && (iTotalLarge == 0)) // If no purchases made, don't need to execute following code
+	if ((iTotalXS == 0) &&(iTotalSmall == 0) && (iTotalMedium == 0) && (iTotalLarge == 0)) // If no purchases made, don't need to execute following code
 	{
 		cout << "No purchases made yet\n";
 		return;
 	}
 
+	if(iTotalXS != 0)
+	{
+		cout << "The total number of Xsmall surfboards is " << iTotalXS << endl;
+	}
+	
 	if (iTotalSmall != 0)
 	{
 		cout << "The total number of small surfboards is " << iTotalSmall << endl;
@@ -118,14 +127,19 @@ void DisplayPurchase(const int iTotalSmall, const int iTotalMedium, const int iT
 }
 
 // Displays # boards purchased and cost
-void DisplayTotal(const int iTotalSmall, const int iTotalMedium, const int iTotalLarge)
+void DisplayTotal(const int iTotalXS, const int iTotalSmall, const int iTotalMedium, const int iTotalLarge)
 {
-	if ((iTotalSmall == 0) && (iTotalMedium == 0) && (iTotalLarge == 0)) // If nothing purchased, can leave function
+	if ((iTotalXS == 0) && (iTotalSmall == 0) && (iTotalMedium == 0) && (iTotalLarge == 0)) // If nothing purchased, can leave function
 	{
 		cout << "No purchases made yet\n";
 		return;
 	}
 
+	if (iTotalXS != 0)
+	{
+		cout << "The total number of Xsmall surfboards is " << iTotalXS << " at a total of $" << iTotalXS *cost_per_XS_board << endl;
+	}
+	
 	if (iTotalSmall != 0)
 	{
 		cout << "The total number of small surfboards is " << iTotalSmall << " at a total of $" << iTotalSmall *cost_per_small_board << endl;
@@ -141,5 +155,5 @@ void DisplayTotal(const int iTotalSmall, const int iTotalMedium, const int iTota
 		cout << "The total number of large surfboards is " << iTotalLarge << " at a total of $" << iTotalLarge * cost_per_large_board << endl;
 	}
 
-	cout << "Amount due: $" << (iTotalLarge * cost_per_large_board) + (iTotalMedium * cost_per_medium_board) + (iTotalSmall * cost_per_small_board) << endl;
+	cout << "Amount due: $" << (iTotalXS * cost_per_XS_board) + (iTotalLarge * cost_per_large_board) + (iTotalMedium * cost_per_medium_board) + (iTotalSmall * cost_per_small_board) << endl;
 }
