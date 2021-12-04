@@ -9,7 +9,7 @@ using namespace std;
 
 // Constants from file 
 const int num_bowlers = 10;
-const int num_games = 4;
+const int num_games = 5;
 
 // Function prototypes
 int GetBowlingData(char filename[], string names[], int scores[][num_games]); // Retrieves data from file, 0 if successful, -1 if error
@@ -35,7 +35,7 @@ void PrettyPrintResults(string names[], int scores[][num_games], double avg[])
 {
 	// Printing out all results
 	cout << "\nResults:\n\n\n";
-	cout << "Format: Name Score1 Score2 Score3 Score4 Average\n";
+	cout << "Format: Name Score1 Score2 Score3 Score4 Score5 Average\n";
 	
 	// Prints each bowler name, their scores, and then their avg
 	for (int bowlers = 0; bowlers < num_bowlers; bowlers++)
