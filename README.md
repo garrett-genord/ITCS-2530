@@ -17,3 +17,6 @@ Week 4 Assignment - From the command prompt, it will take the name of a file to 
 
 
 Week 5 Assignment - This assignment uses user-defined functions to operate a surf shop. The user can select to view their options, purchase different types of surfboards, view the # of boards purchased, and the cost of boards purchased.
+
+
+Week 6 Assignment - This assignment uses arrays and loops to retrieve a list of bowler names/scores from a file, finds each bowlers average, and outputs the results to the console.
