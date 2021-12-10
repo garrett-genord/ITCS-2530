@@ -20,3 +20,6 @@ Week 5 Assignment - This assignment uses user-defined functions to operate a sur
 
 
 Week 6 Assignment - This assignment uses arrays and loops to retrieve a list of bowler names/scores from a file, finds each bowlers average, and outputs the results to the console.
+
+
+Week 7 Assignment - This assignment provides the same functionality as the week 6 assignment, except that is uses an array of structures to organize data, instead of just stand-alone arrays and variables
